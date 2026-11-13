@@ -462,7 +462,7 @@ html.spo,html.spo body{overflow:hidden}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
-var CHECKOUT_URL="https://wa.me/5521987158600?text="+encodeURIComponent("Olá! Vim da página da Black Friday e quero garantir meu acesso à Hub Academy."); // WhatsApp +55 21 98715-8600 (troque pelo link do checkout quando houver)
+var CHECKOUT_URL="https://pay.kiwify.com.br/OSmpGgK?coupon=BLACKACADEMY&utm_id=97760_v0_s00_e0_tv4&fbclid=PARlRTSAVkHv1leHRuA2FlbQIxMABwZG9mAmZkaWQWUSK_wIUNOaQUxnGZ65foKxxTSifJznNydGMGYXBwX2lkDzEyNDAyNDU3NDI4NzQxNAABpzZUD2bq0F0Lwj8IbDJA63QhEQIWjB33yFcpZ5l4VdiKm9npz2A_J4tWNlc8_aem_OKtsbNZDB6q-Jh3aKveKJQ"; // checkout Kiwify (cupom BLACKACADEMY)
 var CONTACTS={
  rafael:"https://wa.me/message/JYN6AHWITYKEG1",
  saulo:"https://wa.me/5521987158600?text=Oii,%20vim%20da%20LANDINGPAGE%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20HUBACADEMYL%20da%20HubClass"
@@ -537,8 +537,8 @@ $("[data-cta]").forEach(function(a){a.href=CHECKOUT_URL;a.target="_blank";a.rel=
  if(RM){v.removeAttribute("autoplay");v.pause();return}
  new IntersectionObserver(function(e){if(e[0].isIntersecting)play();else v.pause()}).observe($("#hero")[0])})();
 
-/* barra fixa no mobile depois do hero */
-(function(){var st=$(".sticky")[0];new IntersectionObserver(function(e){st.classList.toggle("on",!e[0].isIntersecting)}).observe($("#hero")[0])})();
+/* barra fixa no mobile: só aparece no final da página (a partir da última seção) */
+(function(){var st=$(".sticky")[0],fin=$(".final")[0];if(!st||!fin)return;new IntersectionObserver(function(e){var r=e[0];st.classList.toggle("on",r.isIntersecting||r.boundingClientRect.top<0)}).observe(fin)})();
 
 /* ===================== GSAP ===================== */
 (function(){
